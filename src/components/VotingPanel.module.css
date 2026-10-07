@@ -1,0 +1,52 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+  gap: 1.5rem;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  min-height: 2.75rem;
+  margin-bottom: 1rem;
+}
+
+.message {
+  color: var(--white-soft);
+  font-size: 0.9rem;
+}
+
+.error {
+  margin-bottom: 1rem;
+  color: #ff6b86;
+}
+
+.link {
+  padding: 0.5rem 0;
+  border: 0;
+  background: none;
+  color: var(--blue);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
