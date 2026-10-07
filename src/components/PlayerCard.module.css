@@ -1,0 +1,119 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--gradient-translucent-20);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.choice {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 2px var(--blue);
+}
+
+.photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: radial-gradient(circle at 50% 40%, var(--glow-purple), transparent 70%);
+}
+
+.image {
+  object-fit: contain;
+  object-position: bottom;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.name {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.position {
+  color: var(--white-soft);
+  font-size: 0.9rem;
+}
+
+.result {
+  margin-top: 0.5rem;
+}
+
+.track {
+  height: 0.75rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--gradient-main);
+  transform-origin: left;
+  animation: fill 0.8s ease-out;
+}
+
+.leader {
+  background: var(--gradient-rainbow);
+}
+
+.stats {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--white-soft);
+}
+
+.button {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--blue);
+  color: var(--bg);
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.button:disabled {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--white-soft);
+  cursor: not-allowed;
+}
+
+.choice .button:disabled {
+  background: var(--blue);
+  color: var(--bg);
+}
+
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill {
+    animation: none;
+  }
+}
