@@ -71,6 +71,11 @@ anything is written.
   through Prisma on a server-only connection.
 - **Prisma is pinned to 7.x.** The 8.0 release candidate changes the schema
   workflow, so I stayed on the stable version.
+ - **Environments.** Database credentials live in Vercel environment variables
+  (stored as secrets) for Production and Preview, and in a git-ignored `.env`
+  file locally. Preview builds of pull requests use the same database as
+  production, which is fine for a small solo project; a larger team would give
+  previews their own database.
 
 ## Run it locally
 
