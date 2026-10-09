@@ -9,6 +9,10 @@ A fan-voting page for Player of the Week. Built with Next.js, Prisma, and Postgr
 > with or endorsed by Unrivaled Basketball. All logos and branding belong to
 > Unrivaled. Player names and images belong to their respective owners.
 
+| Before voting | After voting |
+| --- | --- |
+| ![Player of the Week page before voting, showing four player cards with Vote buttons](docs/vote-before.png) | ![Player of the Week page after voting, with live percentage bars and the chosen player outlined](docs/vote-after.png) |
+
 ## About
 
 I built this as a portfolio piece for a Jr. Software Engineer application. It
