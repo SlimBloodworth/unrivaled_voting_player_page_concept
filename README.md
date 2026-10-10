@@ -15,7 +15,7 @@ A fan-voting page for Player of the Week. Built with Next.js, Prisma, and Postgr
 
 ## About
 
-I built this as a portfolio piece for a Jr. Software Engineer application. It
+I built this as a portfolio piece. It
 focuses on the fan-facing, full-stack side of the job: a React front end, API
 routes with validation, and a real relational database.
 
@@ -41,6 +41,7 @@ Anyone can vote with no login, and results appear the moment a vote is cast.
 | ORM | Prisma 7 with the `@prisma/adapter-pg` driver adapter |
 | Styling | Plain CSS Modules and CSS custom properties (no UI library) |
 | Hosting | Vercel |
+| AI assistance | [Claude](https://claude.com) (Anthropic) as a chat-based AI pair-programming assistant: drafting and reviewing code, and debugging build and deploy issues. I ran, tested, and reviewed everything and made the final decisions. |
 
 ## Data model
 
@@ -80,6 +81,15 @@ anything is written.
   file locally. Preview builds of pull requests use the same database as
   production, which is fine for a small solo project; a larger team would give
   previews their own database.
+
+  ## AI-assisted development
+
+I built this project with Claude as a pair-programming assistant, working one step at a time. Claude explained tools that were new to me (Next.js, Prisma, Supabase), drafted code that I reviewed and adapted, and helped debug build and deploy problems. I ran every command, tested each change in the browser, kept lint and the production build passing before every pull request, and made the design decisions.
+
+Two places where I checked the AI's output instead of accepting it as-is:
+
+- **Prisma version.** The default `npm install prisma` pulled in an unstable 8.0 release candidate with a different workflow. After checking Prisma's release notes, I pinned the project to the stable 7.x line.
+- **Row Level Security.** Before enabling it on the Supabase tables, I confirmed in the docs that Prisma connects as a role that bypasses it, then tested that the live app still worked afterward.
 
 ## Run it locally
 
