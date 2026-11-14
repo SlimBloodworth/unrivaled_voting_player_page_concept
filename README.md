@@ -5,13 +5,13 @@ A fan-voting page for Player of the Week. Built with Next.js, Prisma, and Postgr
 **Live demo:** https://player-of-the-week-vote.vercel.app
 
 > This project is a conceptual demo created solely for portfolio and interview
-> purposes. It was built as a self-directed learning exercise and is not affiliated
-> with or endorsed by Unrivaled Basketball. All logos and branding belong to
-> Unrivaled. Player names and images belong to their respective owners.
+> purposes. It is not affiliated with or endorsed by Unrivaled Basketball.
+> All logos and branding belong to Unrivaled. 
+> Player names and images belong to their respective owners.
 
 | Before voting | After voting |
 | --- | --- |
-| ![Player of the Week page before voting, showing four player cards with Vote buttons](docs/vote-before.png) | ![Player of the Week page after voting, with live percentage bars and the chosen player outlined](docs/vote-after.png) |
+| ![Player of the Week page before voting, showing four player cards with Vote buttons](docs/vote-before.png) | ![Player of the Week page after voting, with percentage bars and the chosen player outlined](docs/vote-after.png) |
 
 ## About
 
@@ -23,7 +23,7 @@ Anyone can vote with no login, and results appear the moment a vote is cast.
 
 ## Features
 
-- Player cards with photos and a live percentage bar per player that fills in after voting
+- Player cards with photos and a percentage bar per player that fills in after voting
 - Results stay hidden until you vote, with an optional "See results" toggle
 - One-vote-per-browser lock that survives page refreshes
 - API validation: malformed requests and unknown players are rejected with clear status codes
@@ -66,7 +66,10 @@ anything is written.
 
 ## Design decisions and limitations
 
-- **No login or subscription gate.** Anyone can vote and see live results.
+- **No login or subscription gate.** Anyone can vote and see current results.
+- **Results are not real-time.** The page loads results when it opens and again
+  after your own vote. Another visitor's vote appears after a refresh. Polling or a
+  subscription would add live updates.
 - **The vote lock is a convenience, not security.** It uses `localStorage`, so a
   determined visitor can vote again by clearing it or using another browser.
   Real duplicate prevention would need server-side checks, such as authentication
@@ -74,7 +77,7 @@ anything is written.
 - **Row Level Security is enabled** on all tables with no public policies, so
   Supabase's auto-generated public API returns nothing. The app reads and writes
   through Prisma on a server-only connection.
-- **Prisma is pinned to 7.x.** The 8.0 release candidate changes the schema
+- **Prisma is kept on the 7.x line.** The 8.0 release candidate changes the schema
   workflow, so I stayed on the stable version.
 - **Environments.** Database credentials live in Vercel environment variables
   (stored as secrets) for Production and Preview, and in a git-ignored `.env`
@@ -93,34 +96,34 @@ Two places where we verified instead of assuming:
 
 ## Run it locally
 
-You need Node 20 or newer and a PostgreSQL database (a free Supabase project works).
+You need Node.js 20.19+, 22.12+, or 24+ and a PostgreSQL database (a free Supabase project works).
 
 1. Install dependencies:
 
-```bash
+   ```bash
    npm install
-```
+   ```
 
 2. Create a `.env` file in the project root:
 
-```
+   ```
    DATABASE_URL="postgresql://..."   # pooled connection, used by the running app
    DIRECT_URL="postgresql://..."     # direct connection, used by Prisma CLI commands
-```
+   ```
 
 3. Generate the Prisma client, create the tables, and add the sample players:
 
-```bash
+   ```bash
    npx prisma generate
    npx prisma migrate deploy
    npx tsx prisma/seed.ts
-```
+   ```
 
 4. Start the dev server and open http://localhost:3000:
 
-```bash
+   ```bash
    npm run dev
-```
+   ```
 
 `npm run build` runs `prisma generate` before `next build`, so Vercel builds work
 from a fresh checkout.
@@ -133,6 +136,7 @@ pull requests for the step-by-step history.
 ## Possible next steps
 
 - Server-side duplicate prevention (authentication or rate limiting)
+- Real-time result updates (polling or a subscription)
 - A weekly voting window with scheduled resets
 - Automated tests for the API routes
 - Admin tooling to manage candidates
