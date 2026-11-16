@@ -87,7 +87,7 @@ anything is written.
 
 ## AI-assisted development
 
-I built this project with Claude as a chat-based pair-programming assistant, working one step at a time. Claude explained tools that were new to me (Next.js, Prisma, Supabase), drafted code that I reviewed and adapted, and helped debug build and deploy problems. I ran every command, tested changes in the browser, ran lint and a production build before shipping the larger changes, and made the design decisions.
+I built this project with Claude as a chat-based pair-programming assistant, working one step at a time. Claude explained and help set up tools (Next.js, Prisma, Supabase), drafted code that I reviewed and adapted, and helped debug build and deploy problems. I ran every command, tested changes in the browser, ran lint and a production build before shipping the larger changes, and made the design decisions.
 
 Two places where we verified instead of assuming:
 
